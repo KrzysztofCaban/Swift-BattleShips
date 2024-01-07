@@ -3,44 +3,63 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var game: Game
     @State private var showFireworks = false
-    @State private var showFlood = false
-    
-    var body: some View {
-        ZStack {
-            VStack{
-                ToolbarView()
-                ZStack{
-                    VStack {
-                        
-                        OceanView(ownership: .enemy)
-                        OceanView(ownership: .my)
-                    }
-                    
-                    if game.message == "YOU WON !" {
-                        FireworksView(isActive: $showFireworks)
-                    } else if game.message == "YOU LOST !" {
-                        FloodView(isActive: $showFlood)
-                    }
-                }.onChange(of: game.message) { newMessage in
-                    if newMessage == "YOU WON !" {
-                        withAnimation(.easeInOut(duration: 2.0)) {
-                            showFireworks = true
+        @State private var showFlood = false
+        @State private var yOffset: CGFloat = 0
+
+        var body: some View {
+            ZStack {
+                VStack {
+                    ToolbarView()
+                    ZStack {
+                        VStack {
+                            OceanView(ownership: .enemy)
+                            OceanView(ownership: .my)
                         }
-                    } else if newMessage == "YOU LOST !" {
-                        withAnimation(.easeInOut(duration: 2.0)) {
-                            showFlood = true
+
+                        if game.message == "YOU WON !" {
+                            FireworksView(isActive: $showFireworks)
+                        } else if game.message == "YOU LOST !" {
+                            FloodView(isActive: $showFlood)
                         }
                     }
-                }.gesture(DragGesture().onEnded { _ in
-                    game.reset()
-                })
-                
+                    .onChange(of: game.message) { newMessage in
+                        if newMessage == "YOU WON !" {
+                            withAnimation(.easeInOut(duration: 2.0)) {
+                                showFireworks = true
+                            }
+                        } else if newMessage == "YOU LOST !" {
+                            withAnimation(.easeInOut(duration: 2.0)) {
+                                showFlood = true
+                            }
+                        }
+                    }
+                    .gesture(DragGesture().onChanged { value in
+                        if value.translation.height > 0 {
+                            // Allowing dragging only downwards
+                            withAnimation {
+                                // Adjust the yOffset value to control how much the content moves down
+                                yOffset = min(value.translation.height, 150)
+                            }
+                        }
+                    }
+                    .onEnded { value in
+                        if value.translation.height > 0 {
+                            withAnimation {
+                                // Reset the yOffset when dragging ends
+                                yOffset = 0
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                game.reset()
+                            }
+                        }
+                    })
+                    .offset(y: yOffset)
+
+                }
             }
-            
-            
         }
-    }
 }
+
 
 struct FireworksView: View {
     @Binding var isActive: Bool
