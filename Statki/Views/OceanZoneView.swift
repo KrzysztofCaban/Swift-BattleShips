@@ -71,17 +71,7 @@ struct OceanZoneView: View {
                                 .fill(.blue)
                                 .opacity(0.8)
                                 .overlay(
-                                    Circle()
-                                        .stroke(lineWidth: 10)
-                                        .foregroundColor(.white)
-                                        .opacity(0.8)
-                                        .frame(width: 50, height: 50)
-                                        .scaleEffect(isOceanAnimating ? 1 : 0.1)
-                                        .opacity(isOceanAnimating ? 0 : 1)
-                                        .animation(Animation.easeOut(duration: 1).repeatForever(autoreverses: false))
-                                        .onAppear() {
-                                            self.isOceanAnimating = true
-                                        }
+                                    WaterAnimation().frame(width: 50, height: 50)
                                 )
                         } else {
                             RocketShape()
@@ -161,6 +151,28 @@ struct FireAnimation: View {
     }
 }
 
+
+struct WaterAnimation: View {
+    @State private var scale: CGFloat = 0.1
+    @State private var opacity: Double = 1
+    var body: some View {
+        Circle()
+            .stroke(lineWidth: 10)
+            .foregroundColor(.white)
+            .opacity(0.8)
+            .frame(width: 50, height: 50)
+            .scaleEffect(scale)
+            .opacity(opacity)
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 0.9).repeatForever(autoreverses: false)) {
+                scale = 1
+                opacity = 0
+                }
+            }
+    }
+    
+    
+}
 
 
 
