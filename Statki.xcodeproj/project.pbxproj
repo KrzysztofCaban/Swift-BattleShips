@@ -8,17 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		380C872C2B4AE6D70055DB9E /* StatkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C872B2B4AE6D70055DB9E /* StatkiApp.swift */; };
-		380C872E2B4AE6D70055DB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C872D2B4AE6D70055DB9E /* ContentView.swift */; };
 		380C87302B4AE6D80055DB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380C872F2B4AE6D80055DB9E /* Assets.xcassets */; };
 		380C87332B4AE6D80055DB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380C87322B4AE6D80055DB9E /* Preview Assets.xcassets */; };
+		380C873C2B4AE7D70055DB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C873B2B4AE7D70055DB9E /* ContentView.swift */; };
+		380C873F2B4AE81E0055DB9E /* OceanZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C873E2B4AE81E0055DB9E /* OceanZoneView.swift */; };
+		380C87412B4AE8450055DB9E /* OceanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87402B4AE8450055DB9E /* OceanView.swift */; };
+		380C87432B4AE8920055DB9E /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87422B4AE8920055DB9E /* ToolbarView.swift */; };
+		380C87452B4AE8EF0055DB9E /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87442B4AE8EF0055DB9E /* Coordinate.swift */; };
+		380C87472B4AE93F0055DB9E /* OceanZoneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87462B4AE93F0055DB9E /* OceanZoneState.swift */; };
+		380C87492B4AE9570055DB9E /* Ocean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87482B4AE9570055DB9E /* Ocean.swift */; };
+		380C874B2B4AE98B0055DB9E /* ShipCompartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874A2B4AE98B0055DB9E /* ShipCompartment.swift */; };
+		380C874D2B4AE9AA0055DB9E /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874C2B4AE9AA0055DB9E /* Ship.swift */; };
+		380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874E2B4AE9D30055DB9E /* Fleet.swift */; };
+		380C87512B4AEA0F0055DB9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87502B4AEA0F0055DB9E /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		380C87282B4AE6D70055DB9E /* Statki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380C872B2B4AE6D70055DB9E /* StatkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatkiApp.swift; sourceTree = "<group>"; };
-		380C872D2B4AE6D70055DB9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		380C872F2B4AE6D80055DB9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380C87322B4AE6D80055DB9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		380C873B2B4AE7D70055DB9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		380C873E2B4AE81E0055DB9E /* OceanZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanZoneView.swift; sourceTree = "<group>"; };
+		380C87402B4AE8450055DB9E /* OceanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanView.swift; sourceTree = "<group>"; };
+		380C87422B4AE8920055DB9E /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		380C87442B4AE8EF0055DB9E /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		380C87462B4AE93F0055DB9E /* OceanZoneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanZoneState.swift; sourceTree = "<group>"; };
+		380C87482B4AE9570055DB9E /* Ocean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ocean.swift; sourceTree = "<group>"; };
+		380C874A2B4AE98B0055DB9E /* ShipCompartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipCompartment.swift; sourceTree = "<group>"; };
+		380C874C2B4AE9AA0055DB9E /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		380C874E2B4AE9D30055DB9E /* Fleet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
+		380C87502B4AEA0F0055DB9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +71,10 @@
 		380C872A2B4AE6D70055DB9E /* Statki */ = {
 			isa = PBXGroup;
 			children = (
+				380C87532B4B0EEA0055DB9E /* ViewModel */,
+				380C87522B4B0EC10055DB9E /* Models */,
+				380C873D2B4AE7E50055DB9E /* Views */,
 				380C872B2B4AE6D70055DB9E /* StatkiApp.swift */,
-				380C872D2B4AE6D70055DB9E /* ContentView.swift */,
 				380C872F2B4AE6D80055DB9E /* Assets.xcassets */,
 				380C87312B4AE6D80055DB9E /* Preview Content */,
 			);
@@ -65,6 +87,38 @@
 				380C87322B4AE6D80055DB9E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		380C873D2B4AE7E50055DB9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				380C873B2B4AE7D70055DB9E /* ContentView.swift */,
+				380C873E2B4AE81E0055DB9E /* OceanZoneView.swift */,
+				380C87402B4AE8450055DB9E /* OceanView.swift */,
+				380C87422B4AE8920055DB9E /* ToolbarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		380C87522B4B0EC10055DB9E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				380C87462B4AE93F0055DB9E /* OceanZoneState.swift */,
+				380C87442B4AE8EF0055DB9E /* Coordinate.swift */,
+				380C87482B4AE9570055DB9E /* Ocean.swift */,
+				380C874A2B4AE98B0055DB9E /* ShipCompartment.swift */,
+				380C874C2B4AE9AA0055DB9E /* Ship.swift */,
+				380C874E2B4AE9D30055DB9E /* Fleet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		380C87532B4B0EEA0055DB9E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				380C87502B4AEA0F0055DB9E /* Game.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +191,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				380C872E2B4AE6D70055DB9E /* ContentView.swift in Sources */,
+				380C873F2B4AE81E0055DB9E /* OceanZoneView.swift in Sources */,
+				380C87472B4AE93F0055DB9E /* OceanZoneState.swift in Sources */,
+				380C87432B4AE8920055DB9E /* ToolbarView.swift in Sources */,
+				380C873C2B4AE7D70055DB9E /* ContentView.swift in Sources */,
+				380C87492B4AE9570055DB9E /* Ocean.swift in Sources */,
+				380C874B2B4AE98B0055DB9E /* ShipCompartment.swift in Sources */,
+				380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */,
+				380C87512B4AEA0F0055DB9E /* Game.swift in Sources */,
 				380C872C2B4AE6D70055DB9E /* StatkiApp.swift in Sources */,
+				380C87412B4AE8450055DB9E /* OceanView.swift in Sources */,
+				380C87452B4AE8EF0055DB9E /* Coordinate.swift in Sources */,
+				380C874D2B4AE9AA0055DB9E /* Ship.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -279,6 +343,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

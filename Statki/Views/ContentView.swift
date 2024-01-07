@@ -1,0 +1,80 @@
+import SwiftUI
+
+struct ContentView: View {
+    @EnvironmentObject var game: Game
+    @State private var showFireworks = false
+    @State private var showFlood = false
+    
+    var body: some View {
+        ZStack {
+            VStack{
+                ToolbarView()
+                ZStack{
+                    VStack {
+                        
+                        OceanView(ownership: .enemy)
+                        OceanView(ownership: .my)
+                    }
+                    
+                    if game.message == "YOU WON !" {
+                        FireworksView(isActive: $showFireworks)
+                    } else if game.message == "YOU LOST !" {
+                        FloodView(isActive: $showFlood)
+                    }
+                }.onChange(of: game.message) { newMessage in
+                    if newMessage == "YOU WON !" {
+                        withAnimation(.easeInOut(duration: 2.0)) {
+                            showFireworks = true
+                        }
+                    } else if newMessage == "YOU LOST !" {
+                        withAnimation(.easeInOut(duration: 2.0)) {
+                            showFlood = true
+                        }
+                    }
+                }.gesture(DragGesture().onEnded { _ in
+                    game.reset()
+                })
+                
+            }
+            
+            
+        }
+    }
+}
+
+struct FireworksView: View {
+    @Binding var isActive: Bool
+    
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.7).ignoresSafeArea()
+            
+            Text("🎆")
+                .font(.system(size: 100))
+                .foregroundColor(.white)
+                .onTapGesture {
+                    isActive = false
+                }
+        }
+        .opacity(isActive ? 1 : 0)
+    }
+}
+
+struct FloodView: View {
+    @Binding var isActive: Bool
+    
+    var body: some View {
+        ZStack {
+            Color.blue.opacity(0.7).ignoresSafeArea()
+            
+            Text("💦")
+                .font(.system(size: 100))
+                .foregroundColor(.white)
+                .onTapGesture {
+                    isActive = false
+                }
+        }
+        .opacity(isActive ? 1 : 0)
+    }
+}
+

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct StatkiApp: App {
+    @StateObject private var game = Game(numCols: 8, numRows: 8)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(game)
         }
     }
 }
