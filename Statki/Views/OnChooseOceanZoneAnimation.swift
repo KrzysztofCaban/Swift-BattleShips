@@ -1,16 +1,18 @@
-//
-//  OnChooseOceanZoneAnimation.swift
-//  Statki
-//
-//  Created by Krzysztof Caban on 08/01/2024.
-//
-
 import SwiftUI
 
+// Animacja wyboru komurki na planszy
 struct OnChooseOceanZoneAnimation: View {
+
+    // Definicja możliwych stanów komórki, które mogą być wykorzystane w animacji
     @Binding var zoneState: OceanZoneState
+
+    // Stała przechowująca wielkość komórki
     private let oceanSquare = CGSize(width: 0.95, height: 0.95)
+
+    // Zmienne przechowujące informację o tym, czy animacja jest w trakcie wykonywania
     @State private var isAnimating = false
+
+    // Zmienne przechowujące informację o tym, jakie parametry animacji powinny być wykorzystane
     @State private var triangleOffset: CGSize = CGSize(width: 0, height: 200)
     @State private var triangleScale: CGFloat = 2.0
 
@@ -50,7 +52,8 @@ struct OnChooseOceanZoneAnimation: View {
         }
     }
 
-    func animateRocket(geometry: GeometryProxy) {
+    // Animacja wystrzelenia rakiety
+    private func animateRocket(geometry: GeometryProxy) {
         withAnimation(Animation.easeInOut(duration: 0.5)) {
             triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
             triangleScale = 0.2

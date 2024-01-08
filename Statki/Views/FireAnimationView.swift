@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Animacja trafienia części statku
 struct FireAnimation: View {
     @State private var flameHeight: CGFloat = 20.0
     

@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Animacja przegrania gry
 struct FloodView: View {
     @Binding var isActive: Bool
     

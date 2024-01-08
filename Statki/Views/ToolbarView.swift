@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Pasek informacji o grze
 struct ToolbarView: View {
     @EnvironmentObject var game: Game
     

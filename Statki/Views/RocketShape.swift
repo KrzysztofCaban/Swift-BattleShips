@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Kształt rakiety
 struct RocketShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()

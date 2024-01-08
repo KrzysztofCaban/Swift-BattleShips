@@ -46,28 +46,45 @@ struct Coordinate: Hashable {
         }
     }
     
+    // Funkcja przesuwająca współrzędne w danym kierunku
     func move(in direction: Direction, within game: Game) -> Coordinate {
+
+        // Tworzymy kopię obecnej współrzędnej
         var newCoordinate = self
+
+        // Wybieramy kierunek przesunięcia
         switch direction {
+
+        // Jeżeli współrzędna y jest większa od 0, przesuwamy ją o 1 w górę
         case .top:
             if newCoordinate.y > 0 {
                 newCoordinate.y -= 1
             }
+
+        // Jeżeli współrzędna y jest mniejsza od liczby wierszy gry minus 1, przesuwamy ją o 1 w dół
         case .bottom:
             if newCoordinate.y < game.numRows - 1 {
                 newCoordinate.y += 1
             }
+
+        // Jeżeli współrzędna x jest większa od 0, przesuwamy ją o 1 w lewo
         case .left:
             if newCoordinate.x > 0 {
                 newCoordinate.x -= 1
             }
+
+        // Jeżeli współrzędna x jest mniejsza od liczby kolumn gry minus 1, przesuwamy ją o 1 w prawo
         case .right:
             if newCoordinate.x < game.numCols - 1 {
                 newCoordinate.x += 1
             }
+
+        // W przypadku nieznanych kierunków, nie robimy nic
         default:
             break
         }
+
+        // Zwracamy nową współrzędną
         return newCoordinate
     }
 }

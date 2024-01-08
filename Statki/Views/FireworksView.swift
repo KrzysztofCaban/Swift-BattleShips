@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Animacja wygrania gry
 struct FireworksView: View {
     @Binding var isActive: Bool
     @State private var opacity: Double = 1.0

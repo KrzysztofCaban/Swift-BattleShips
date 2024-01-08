@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Animacja niecelnego strzału
 struct WaterAnimation: View {
     @State private var scale: CGFloat = 0.1
     @State private var opacity: Double = 1

@@ -1,9 +1,13 @@
 import SwiftUI
 
 
-//REPRESENTATION OF SINGLE ZONE IN AN OCEAN
+// Widok pojedynczej komórki planszy
 struct OceanZoneView: View {
+
+    // Definicja możliwych stanów komórki
     @Binding var state: OceanZoneState
+
+    // Zmienna przechowująca kolor komórki
     var color: Color {
         switch state {
         case .clear(let ship):
@@ -27,7 +31,11 @@ struct OceanZoneView: View {
             return .white
         }
     }
+
+    // Zmienna przechowująca informację o tym, czy komórka powinna być widoczna
     var forceVisibility: Bool
+
+    // Stała przechowująca wielkość komórki
     private let circleScale = CGSize(width: 0.7, height: 0.7)
     
     var body: some View {
@@ -47,6 +55,7 @@ struct OceanZoneView: View {
                     EmptyView()
                 }
             case .miss, .hit:
+                // Wywołąnie animacji kliknięcia komórki
                 OnChooseOceanZoneAnimation(zoneState: $state)
             }
         }
