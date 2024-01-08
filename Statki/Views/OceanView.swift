@@ -3,7 +3,7 @@ import SwiftUI
 struct OceanView: View {
     @EnvironmentObject var game: Game
     enum Ownership {
-        case my
+        case player
         case enemy
     }
     let ownership: Ownership
@@ -17,7 +17,7 @@ struct OceanView: View {
                     let x = index - (y * game.numCols)
                     let location = Coordinate(x: x, y: y)
                     switch self.ownership {
-                    case .my:
+                    case .player:
                         OceanZoneView(state: $game.playerZoneStates[x][y], forceVisibility: true)
                             .frame(height: geo.size.height/CGFloat(game.numRows))
 
@@ -36,7 +36,7 @@ struct OceanView: View {
 
 struct OceanView_Previews: PreviewProvider {
     static var previews: some View {
-        OceanView(ownership: .my)
+        OceanView(ownership: .player)
             .environmentObject(Game(numCols: 8, numRows: 8))
     }
 }

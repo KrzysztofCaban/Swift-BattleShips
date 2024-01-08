@@ -18,7 +18,7 @@ struct ToolbarView: View {
         HStack {
             resetButton
             Spacer()
-            Text(game.message)
+            Text(game.gameMessage)
             Spacer()
             Text("\(game.turnCounter)")
                 .padding(.trailing, 10)

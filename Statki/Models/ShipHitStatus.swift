@@ -1,5 +1,3 @@
-import Foundation
-
 enum ShipHitStatus {
     case miss
     case hit

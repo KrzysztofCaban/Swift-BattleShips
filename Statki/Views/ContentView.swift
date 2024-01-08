@@ -13,15 +13,15 @@ struct ContentView: View {
                 VStack {
                     OceanView(ownership: .enemy)
                     Spacer()
-                    OceanView(ownership: .my)
+                    OceanView(ownership: .player)
                 }.overlay{
-                    if game.message == "YOU WON !" {
+                    if game.gameMessage == "YOU WON !" {
                         FireworksView(isActive: $showFireworks)
-                    } else if game.message == "YOU LOST !" {
+                    } else if game.gameMessage == "YOU LOST !" {
                         FloodView(isActive: $showFlood)
                     }
                 }
-                .onChange(of: game.message) { newMessage in
+                .onChange(of: game.gameMessage) { newMessage in
                     if newMessage == "YOU WON !" {
                         withAnimation(.easeInOut(duration: 2.0)) {
                             showFireworks = true

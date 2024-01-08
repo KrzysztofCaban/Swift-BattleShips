@@ -11,7 +11,7 @@ final class Game: ObservableObject {
     var enemyFleet: Fleet
     @Published var playerZoneStates = [[OceanZoneState]]()
     @Published var enemyZoneStates = [[OceanZoneState]]()
-    @Published var message = ""
+    @Published var gameMessage = ""
     @Published var turnCounter: Int = 0
     var over: Bool {
         return playerFleet.isDestroyed() || enemyFleet.isDestroyed()
@@ -38,7 +38,7 @@ final class Game: ObservableObject {
         self.enemyFleet.deploy(on: self.enemyOcean)
         self.playerZoneStates = defaultZoneStates(for: self.playerFleet)
         self.enemyZoneStates = defaultZoneStates(for: self.enemyFleet)
-        self.message = ""
+        self.gameMessage = ""
         self.turnCounter = 0
         self.lastHittedLocation = nil
         self.directionToLastHit = nil
@@ -49,7 +49,7 @@ final class Game: ObservableObject {
     // HANGLE USER TAP
     func enemyZoneTapped(_ location: Coordinate) -> ShipHitStatus {
         guard !over else {
-            message = "YOU LOST !"
+            gameMessage = "YOU LOST !"
             return .over
         }
 
@@ -60,15 +60,15 @@ final class Game: ObservableObject {
                 hitShip.hit(at: location)
                 enemyZoneStates[location.x][location.y] = .hit
                 if hitShip.isSunk() {
-                    message = "You sunk enemy \(hitShip.name)!"
+                    gameMessage = "You sunk enemy \(hitShip.name)!"
                     status = .sunk
                 } else {
-                    message = "Your hit at x:\(location.x), y:\(location.y)"
+                    gameMessage = "Your hit at x:\(location.x), y:\(location.y)"
                     status = .hit
                 }
             } else {
                 enemyZoneStates[location.x][location.y] = .miss
-                message = "You missed"
+                gameMessage = "You missed"
             }
 
             Task {
@@ -81,7 +81,7 @@ final class Game: ObservableObject {
 
     func playerZoneTapped(_ location: Coordinate) -> ShipHitStatus {
         guard !over else {
-            message = "YOU WON !"
+            gameMessage = "YOU WON !"
             return .over
         }
 
@@ -91,19 +91,19 @@ final class Game: ObservableObject {
                 hitShip.hit(at: location)
                 playerZoneStates[location.x][location.y] = .hit
                 if hitShip.isSunk() {
-                    message = "Enemy did sunk your \(hitShip.name)!"
+                    gameMessage = "Enemy did sunk your \(hitShip.name)!"
                     status = .sunk
 
                     self.lastHittedLocation = nil
                     self.directionToLastHit = nil
                     self.suggestedLocation = nil
                 } else {
-                    message = "Hited at x:\(location.x), y:\(location.y)"
+                    gameMessage = "Hited at x:\(location.x), y:\(location.y)"
                     status = .hit
                 }
             } else {
                 playerZoneStates[location.x][location.y] = .miss
-                message = "Missed at x:\(location.x), y:\(location.y)"
+                gameMessage = "Missed at x:\(location.x), y:\(location.y)"
             }
         }
         return status
