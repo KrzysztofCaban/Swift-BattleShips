@@ -19,7 +19,7 @@ final class Game: ObservableObject {
     
     var lastHittedLocation: Coordinate?
     var suggestedLocation: Coordinate?
-    var directionToLastHit: Coordinate.ComparsionVector?
+    var directionToLastHit: Direction?
     
     
     init(numCols: Int, numRows: Int) {
@@ -249,32 +249,5 @@ final class Game: ObservableObject {
             }
         }
         return locations
-    }
-}
-
-extension Coordinate {
-    func move(in direction: Direction, within game: Game) -> Coordinate {
-        var newCoordinate = self
-        switch direction {
-        case .top:
-            if newCoordinate.y > 0 {
-                newCoordinate.y -= 1
-            }
-        case .bottom:
-            if newCoordinate.y < game.numRows - 1 {
-                newCoordinate.y += 1
-            }
-        case .left:
-            if newCoordinate.x > 0 {
-                newCoordinate.x -= 1
-            }
-        case .right:
-            if newCoordinate.x < game.numCols - 1 {
-                newCoordinate.x += 1
-            }
-        default:
-            break
-        }
-        return newCoordinate
     }
 }

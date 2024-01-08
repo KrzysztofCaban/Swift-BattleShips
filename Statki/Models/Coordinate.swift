@@ -12,18 +12,8 @@ struct Coordinate: Hashable {
         return lhs.x == rhs.x && lhs.y == rhs.y
     }
 
-    // Definiujemy typ wyliczeniowy do porównywania dwóch współrzędnych
-    enum ComparsionVector {
-        case equal
-        case top
-        case right
-        case bottom
-        case left
-        case invalid
-    }
-
     // Funkcja porównująca dwie współrzędne
-    func compare(_ other: Coordinate) -> ComparsionVector {
+    func compare(_ other: Coordinate) -> Direction {
         // Sprawdzamy różnicę współrzędnych
         switch (self.x - other.x, self.y - other.y) {
 
@@ -54,6 +44,31 @@ struct Coordinate: Hashable {
             // Jeśli zarówno x, jak i y są różne, zwracamy .invalid
             return .invalid
         }
+    }
+    
+    func move(in direction: Direction, within game: Game) -> Coordinate {
+        var newCoordinate = self
+        switch direction {
+        case .top:
+            if newCoordinate.y > 0 {
+                newCoordinate.y -= 1
+            }
+        case .bottom:
+            if newCoordinate.y < game.numRows - 1 {
+                newCoordinate.y += 1
+            }
+        case .left:
+            if newCoordinate.x > 0 {
+                newCoordinate.x -= 1
+            }
+        case .right:
+            if newCoordinate.x < game.numCols - 1 {
+                newCoordinate.x += 1
+            }
+        default:
+            break
+        }
+        return newCoordinate
     }
 }
 

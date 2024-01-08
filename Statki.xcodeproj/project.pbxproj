@@ -22,6 +22,7 @@
 		380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874E2B4AE9D30055DB9E /* Fleet.swift */; };
 		380C87512B4AEA0F0055DB9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87502B4AEA0F0055DB9E /* Game.swift */; };
 		3F134B5C2B4C47CE0013B183 /* ShipHitStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */; };
+		3F25762A2B4C6C4F00945450 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576292B4C6C4F00945450 /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		380C874E2B4AE9D30055DB9E /* Fleet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
 		380C87502B4AEA0F0055DB9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipHitStatus.swift; sourceTree = "<group>"; };
+		3F2576292B4C6C4F00945450 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				380C874C2B4AE9AA0055DB9E /* Ship.swift */,
 				380C874E2B4AE9D30055DB9E /* Fleet.swift */,
 				3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */,
+				3F2576292B4C6C4F00945450 /* Direction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				380C87492B4AE9570055DB9E /* Ocean.swift in Sources */,
 				380C874B2B4AE98B0055DB9E /* ShipCompartment.swift in Sources */,
 				380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */,
+				3F25762A2B4C6C4F00945450 /* Direction.swift in Sources */,
 				380C87512B4AEA0F0055DB9E /* Game.swift in Sources */,
 				380C872C2B4AE6D70055DB9E /* StatkiApp.swift in Sources */,
 				380C87412B4AE8450055DB9E /* OceanView.swift in Sources */,
