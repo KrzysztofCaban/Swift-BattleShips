@@ -46,7 +46,7 @@ class Ship {
 
 // Rozszerzenie klasy Ship o protokół CustomStringConvertible
 extension Ship: CustomStringConvertible {
-    // Właściwość obliczeniowa zwracająca opis statku
+    // Właściwość zwracająca opis statku
     var description: String {
         return name + ": " + compartments.description
         }
