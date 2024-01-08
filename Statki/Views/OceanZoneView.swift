@@ -31,21 +31,6 @@ struct OceanZoneView: View {
     }
     var forceVisibility: Bool
     private let circleScale = CGSize(width: 0.5, height: 0.5)
-    private let oceanSquare = CGSize(width: 0.9, height: 0.9)
-    
-    
-    
-    @State private var isAnimating = false
-    @State private var isOceanAnimating = false
-    
-    @State private var triangleOffset: CGSize = CGSize(width: 0, height: 200)
-    
-    @State private var triangleScale: CGFloat = 1.0
-    
-    @State private var targetLocation = CGPoint(x: 200, y: 200)
-    @State private var referencePoint = CGPoint(x: 100, y: 100)
-    
-    
     
     var body: some View {
         ZStack {
@@ -63,69 +48,11 @@ struct OceanZoneView: View {
                     EmptyView()
                 }
             case .miss:
+                OnMissAnimation()
                 
-                GeometryReader { geometry in
-                    ZStack {
-                        if isAnimating {
-                            ScaledShape(shape: Rectangle(), scale: oceanSquare)
-                                .fill(.blue)
-                                .opacity(0.8)
-                                .overlay(
-                                    WaterAnimation().frame(width: 50, height: 50)
-                                )
-                        } else {
-                            RocketShape()
-                                .fill(Color.black)
-                                .frame(width: 50, height: 50)
-                                .scaleEffect(triangleScale)
-                                .offset(triangleOffset)
-                                .rotationEffect(.degrees(180))
-                                .onAppear {
-                                    withAnimation(Animation.easeInOut(duration: 0.5)) {
-                                        triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
-                                        triangleScale = 0.5
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        withAnimation {
-                                            isAnimating = true
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
                 
             case .hit:
-                GeometryReader { geometry in
-                    ZStack {
-                        if isAnimating {
-                            ScaledShape(shape: Rectangle(), scale: oceanSquare)
-                                .fill(.gray)
-                                .opacity(0.8)
-                                .overlay(
-                                    FireAnimation().frame(width: 50, height: 50)
-                                )
-                        } else {
-                            RocketShape()
-                                .fill(Color.black)
-                                .frame(width: 50, height: 50)
-                                .scaleEffect(triangleScale)
-                                .offset(triangleOffset)
-                                .rotationEffect(.degrees(180))
-                                .onAppear {
-                                    withAnimation(Animation.easeInOut(duration: 0.5)) {
-                                        triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
-                                        triangleScale = 0.5
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        withAnimation {
-                                            isAnimating = true
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+                OnHitAnimation()
                 
                 
             }
@@ -148,6 +75,93 @@ struct FireAnimation: View {
                     flameHeight = 40.0
                 }
             }
+    }
+}
+
+struct OnHitAnimation: View {
+    private let oceanSquare = CGSize(width: 0.9, height: 0.9)
+    @State private var isAnimating = false
+    @State private var triangleOffset: CGSize = CGSize(width: 0, height: 200)
+    
+    @State private var triangleScale: CGFloat = 1.0
+    
+    @State private var targetLocation = CGPoint(x: 200, y: 200)
+    @State private var referencePoint = CGPoint(x: 100, y: 100)
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                if isAnimating {
+                    ScaledShape(shape: Rectangle(), scale: oceanSquare)
+                        .fill(.gray)
+                        .opacity(0.8)
+                        .overlay(
+                            FireAnimation().frame(width: 50, height: 50)
+                        )
+                } else {
+                    RocketShape()
+                        .fill(Color.black)
+                        .frame(width: 50, height: 50)
+                        .scaleEffect(triangleScale)
+                        .offset(triangleOffset)
+                        .rotationEffect(.degrees(180))
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 0.5)) {
+                                triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
+                                triangleScale = 0.5
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                withAnimation {
+                                    isAnimating = true
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+}
+
+struct OnMissAnimation: View {
+    private let oceanSquare = CGSize(width: 0.9, height: 0.9)
+    @State private var isAnimating = false
+    @State private var triangleOffset: CGSize = CGSize(width: 0, height: 200)
+    
+    @State private var triangleScale: CGFloat = 1.0
+    
+    @State private var targetLocation = CGPoint(x: 200, y: 200)
+    @State private var referencePoint = CGPoint(x: 100, y: 100)
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                if isAnimating {
+                    ScaledShape(shape: Rectangle(), scale: oceanSquare)
+                        .fill(.blue)
+                        .opacity(0.8)
+                        .overlay(
+                            WaterAnimation().frame(width: 50, height: 50)
+                        )
+                } else {
+                    RocketShape()
+                        .fill(Color.black)
+                        .frame(width: 50, height: 50)
+                        .scaleEffect(triangleScale)
+                        .offset(triangleOffset)
+                        .rotationEffect(.degrees(180))
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 0.5)) {
+                                triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
+                                triangleScale = 0.5
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                withAnimation {
+                                    isAnimating = true
+                                }
+                            }
+                        }
+                }
+            }
+            
+        }
     }
 }
 
