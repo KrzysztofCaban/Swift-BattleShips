@@ -130,6 +130,14 @@ final class Game: ObservableObject {
         }
     }
 
+    func getNearestLocations(to lastHittedLocation: Coordinate, from clearLocations: [Coordinate]) -> [Coordinate] {
+        clearLocations.filter { clearLocation in
+            let dx = abs(clearLocation.x - lastHittedLocation.x)
+            let dy = abs(clearLocation.y - lastHittedLocation.y)
+            return (dx == 1 && dy == 0) || (dx == 0 && dy == 1)
+        }
+    }
+
     func performEnemyRandomFire() {
         let clearLocations = findAllClearLocations()
         guard var location = clearLocations.randomElement() else { return }
@@ -138,26 +146,10 @@ final class Game: ObservableObject {
             location = suggestedLocation
             self.suggestedLocation = nil
         } else if let lastHittedLocation = self.lastHittedLocation {
-            
-            var nearestLocations = [Coordinate]()
-            for clearLocation in clearLocations {
-                let x = clearLocation.x
-                let y = clearLocation.y
-                
-                if (lastHittedLocation.y == y + 1 && lastHittedLocation.x == x) // up
-                    || (lastHittedLocation.y == y - 1 && lastHittedLocation.x == x) // down
-                    || (lastHittedLocation.x == x - 1 && lastHittedLocation.y == y) // left
-                    || (lastHittedLocation.x == x + 1 && lastHittedLocation.y == y) { // right
-                    nearestLocations.append(clearLocation)
-                }
-            }
+            let nearestLocations = getNearestLocations(to: lastHittedLocation, from: clearLocations)
             if let directionToLastHit = self.directionToLastHit {
                 let calculatedLocation = lastHittedLocation.move(in: directionToLastHit, within: self)
-                if clearLocations.contains(calculatedLocation) {
-                    location = calculatedLocation
-                } else if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                    location = suggestedLocation
-                }
+                location = clearLocations.contains(calculatedLocation) ? calculatedLocation : self.suggestLocation(available: clearLocations)
             } else if let foundLocation = nearestLocations.randomElement() {
                 location = foundLocation
             }
