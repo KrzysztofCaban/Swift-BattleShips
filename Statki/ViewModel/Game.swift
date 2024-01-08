@@ -20,13 +20,7 @@ final class Game: ObservableObject {
     var lastHittedLocation: Coordinate?
     var suggestedLocation: Coordinate?
     var directionToLastHit: Coordinate.ComparsionVector?
-
-    enum ShipHitStatus {
-        case miss
-        case hit
-        case sunk
-        case over
-    }
+    
     
     init(numCols: Int, numRows: Int) {
         self.numRows = numRows
@@ -69,23 +63,23 @@ final class Game: ObservableObject {
                     message = "You sunk enemy \(hitShip.name)!"
                     status = .sunk
                 } else {
-                    message = "Hit at x:\(location.x), y:\(location.y)"
+                    message = "Your hit at x:\(location.x), y:\(location.y)"
                     status = .hit
                 }
             } else {
                 enemyZoneStates[location.x][location.y] = .miss
-                message = "Miss"
+                message = "You missed"
             }
 
             Task {
-                let duration = UInt64(0.5 * 1_000_000_000) // nanoseconds
+                let duration = UInt64(0.7 * 1_000_000_000) // nanoseconds
                 await self.delayedAction(for: duration)
             }
         }
         return status
     }
 
-    func myZoneTapped(_ location: Coordinate) -> ShipHitStatus {
+    func playerZoneTapped(_ location: Coordinate) -> ShipHitStatus {
         guard !over else {
             message = "YOU WON !"
             return .over
@@ -232,7 +226,7 @@ final class Game: ObservableObject {
             }
         }
 
-        let hitStatus = self.myZoneTapped(location)
+        let hitStatus = self.playerZoneTapped(location)
 
         // filter last location
         let stillAvailableClearLocations = clearLocations.filter { tempLocation in

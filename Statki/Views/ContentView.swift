@@ -10,13 +10,11 @@ struct ContentView: View {
         ZStack {
             VStack {
                 ToolbarView()
-                ZStack {
-                    VStack {
-                        OceanView(ownership: .enemy)
-                        Spacer()
-                        OceanView(ownership: .my)
-                    }
-                    
+                VStack {
+                    OceanView(ownership: .enemy)
+                    Spacer()
+                    OceanView(ownership: .my)
+                }.overlay{
                     if game.message == "YOU WON !" {
                         FireworksView(isActive: $showFireworks)
                     } else if game.message == "YOU LOST !" {
