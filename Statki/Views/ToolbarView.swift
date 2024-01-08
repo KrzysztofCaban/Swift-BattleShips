@@ -3,28 +3,26 @@ import SwiftUI
 struct ToolbarView: View {
     @EnvironmentObject var game: Game
     
+    private var resetButton: some View {
+        Button(action:{
+            withAnimation {
+                game.reset()
+            }
+        }) {Image(systemName: "repeat")}
+            .help("Start a new game.")
+            .foregroundColor(.accentColor)
+            .padding(.leading, 10)
+    }
+    
     var body: some View {
         HStack {
-            Button(action:{
-                withAnimation {
-                    reset()
-                }}) {Image(systemName: "repeat")}
-                .help("Start a new game.")
-                .foregroundColor(.accentColor)
-                .padding(.leading, 10)
+            resetButton
             Spacer()
             Text(game.message)
             Spacer()
             Text("\(game.turnCounter)")
                 .padding(.trailing, 10)
-
-
-
         }.frame(height: 30)
-    }
-    
-    func reset() {
-        game.reset()
     }
 }
 

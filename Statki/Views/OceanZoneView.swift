@@ -91,21 +91,27 @@ struct OnChooseOceanZoneAnimation: View {
                         .offset(triangleOffset)
                         .rotationEffect(.degrees(180))
                         .onAppear {
-                            withAnimation(Animation.easeInOut(duration: 0.5)) {
-                                triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
-                                triangleScale = 0.2
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                withAnimation {
-                                    isAnimating = true
-                                }
-                            }
+                            animateRocket(geometry: geometry)
                         }
                 }
             }
         }
     }
+    
+    func animateRocket(geometry: GeometryProxy) {
+        withAnimation(Animation.easeInOut(duration: 0.5)) {
+            triangleOffset = CGSize(width: geometry.size.width / 2 - 25, height: geometry.size.height / 2 - 25)
+            triangleScale = 0.2
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation {
+                isAnimating = true
+            }
+        }
+    }
 }
+
+
 
 struct FireAnimation: View {
     @State private var flameHeight: CGFloat = 20.0
