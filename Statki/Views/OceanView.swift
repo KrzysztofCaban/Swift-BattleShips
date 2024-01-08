@@ -33,11 +33,3 @@ struct OceanView: View {
         }
     }
 }
-
-struct OceanView_Previews: PreviewProvider {
-    static var previews: some View {
-        OceanView(ownership: .player)
-            .environmentObject(Game(numCols: 8, numRows: 8))
-    }
-}
-

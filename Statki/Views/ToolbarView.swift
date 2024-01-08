@@ -25,11 +25,3 @@ struct ToolbarView: View {
         }.frame(height: 30)
     }
 }
-
-struct ToolbarView_Previews: PreviewProvider {
-    static var previews: some View {
-        ToolbarView()
-            .environmentObject(Game(numCols: 8, numRows: 8))
-    }
-}
-
