@@ -1,37 +1,42 @@
 import Foundation
 
 class Ship {
+    // Zmienna przechowująca nazwę statku
     var name: String
+    // Array przechowujący części statku
     var compartments: [ShipCompartment]
+    // Właściwość obliczeniowa zwracająca długość statku (liczbę komór)
     var length: Int {return compartments.count}
     
+    // Inicjalizator klasy Ship
     init(_ name: String, coordinates: [Coordinate]) {
         self.name = name
         self.compartments = [ShipCompartment]()
+        // Dla każdej współrzędnej tworzymy część statku
         for coordinate in coordinates {
             compartments.append(ShipCompartment(location: coordinate))
         }
     }
     
-    //RETURN SHIP'S COORDINATES
+    // Funkcja zwracająca współrzędne statku
     func coordinates() -> [Coordinate] {
         return Array(compartments.map {$0.location})
     }
     
-    //RETURN TRUE IF SHIP OCCUPIES GIVEN COORDINATE
+    // Funkcja sprawdzająca, czy statek zajmuje daną współrzędną
     func occupies(_ location: Coordinate) -> Bool
     {
         return compartments.contains(where:{$0.location == location})
     }
     
-    //RETURN TRUE IF ALL COMPARTMENTS ARE FLOODED
+    // Funkcja sprawdzająca, czy statek jest zatopiony
     func isSunk() -> Bool
     {
-        //SHIP IS NOT SUNK IF AT LEAST ONE COMPARTMENT IS NOT FLOODED
+       // Statek nie jest zatopiony, jeśli przynajmniej jedna część nie jest zalana
         return !compartments.contains(where: {!$0.flooded})
     }
     
-    //HIT AT GIVEN COORDINATE
+    // Funkcja symulująca trafienie w statek na danej współrzędnej
     func hit(at location: Coordinate) {
         if let compartment = compartments.first(where: {$0.location == location}) {
             compartment.flooded = true
@@ -39,7 +44,9 @@ class Ship {
     }
 }
 
+// Rozszerzenie klasy Ship o protokół CustomStringConvertible
 extension Ship: CustomStringConvertible {
+    // Właściwość obliczeniowa zwracająca opis statku
     var description: String {
         return name + ": " + compartments.description
         }
