@@ -18,7 +18,7 @@ struct OceanView: View {
                     let location = Coordinate(x: x, y: y)
                     switch self.ownership {
                     case .my:
-                        OceanZoneView(state: $game.myZoneStates[x][y], forceVisibility: true)
+                        OceanZoneView(state: $game.playerZoneStates[x][y], forceVisibility: true)
                             .frame(height: geo.size.height/CGFloat(game.numRows))
 
                     case .enemy:

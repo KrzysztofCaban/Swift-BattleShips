@@ -15,7 +15,7 @@ struct ToolbarView: View {
             Spacer()
             Text(game.message)
             Spacer()
-            Text("\(game.messageAmo)")
+            Text("\(game.turnCounter)")
                 .padding(.trailing, 10)
 
 

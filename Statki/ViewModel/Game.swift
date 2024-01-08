@@ -5,17 +5,18 @@ final class Game: ObservableObject {
     
     let numCols: Int
     let numRows: Int
-    var myOcean: Ocean
+    var playerOcean: Ocean
     var enemyOcean: Ocean
-    var myFleet: Fleet
+    var playerFleet: Fleet
     var enemyFleet: Fleet
-    @Published var myZoneStates = [[OceanZoneState]]()
+    @Published var playerZoneStates = [[OceanZoneState]]()
     @Published var enemyZoneStates = [[OceanZoneState]]()
     @Published var message = ""
-    @Published var messageAmo: Int = 0
+    @Published var turnCounter: Int = 0
     var over: Bool {
-        return myFleet.isDestroyed() || enemyFleet.isDestroyed()
+        return playerFleet.isDestroyed() || enemyFleet.isDestroyed()
     }
+    
     var lastHittedLocation: Coordinate?
     var suggestedLocation: Coordinate?
     var directionToLastHit: Coordinate.ComparsionVector?
@@ -30,8 +31,8 @@ final class Game: ObservableObject {
     init(numCols: Int, numRows: Int) {
         self.numRows = numRows
         self.numCols = numCols
-        self.myOcean = Ocean(numCols: numCols, numRows: numRows)
-        self.myFleet = Fleet()
+        self.playerOcean = Ocean(numCols: numCols, numRows: numRows)
+        self.playerFleet = Fleet()
         self.enemyOcean = Ocean(numCols: numCols, numRows: numRows)
         self.enemyFleet = Fleet()
         reset()
@@ -39,12 +40,12 @@ final class Game: ObservableObject {
     
     // NEW GAME
     func reset() {
-        self.myFleet.deploy(on: self.myOcean)
+        self.playerFleet.deploy(on: self.playerOcean)
         self.enemyFleet.deploy(on: self.enemyOcean)
-        self.myZoneStates = defaultZoneStates(for: self.myFleet)
+        self.playerZoneStates = defaultZoneStates(for: self.playerFleet)
         self.enemyZoneStates = defaultZoneStates(for: self.enemyFleet)
         self.message = ""
-        self.messageAmo = 0
+        self.turnCounter = 0
         self.lastHittedLocation = nil
         self.directionToLastHit = nil
         self.suggestedLocation = nil
@@ -60,7 +61,7 @@ final class Game: ObservableObject {
 
         var status: ShipHitStatus = .miss
         if case .clear = enemyZoneStates[location.x][location.y] {
-            self.messageAmo += 1
+            self.turnCounter += 1
             if let hitShip = enemyFleet.ship(at: location) {
                 hitShip.hit(at: location)
                 enemyZoneStates[location.x][location.y] = .hit
@@ -91,10 +92,10 @@ final class Game: ObservableObject {
         }
 
         var status: ShipHitStatus = .miss
-        if case .clear = myZoneStates[location.x][location.y] {
-            if let hitShip = myFleet.ship(at: location) {
+        if case .clear = playerZoneStates[location.x][location.y] {
+            if let hitShip = playerFleet.ship(at: location) {
                 hitShip.hit(at: location)
-                myZoneStates[location.x][location.y] = .hit
+                playerZoneStates[location.x][location.y] = .hit
                 if hitShip.isSunk() {
                     message = "Enemy did sunk your \(hitShip.name)!"
                     status = .sunk
@@ -107,7 +108,7 @@ final class Game: ObservableObject {
                     status = .hit
                 }
             } else {
-                myZoneStates[location.x][location.y] = .miss
+                playerZoneStates[location.x][location.y] = .miss
                 message = "Missed at x:\(location.x), y:\(location.y)"
             }
         }
@@ -308,7 +309,7 @@ final class Game: ObservableObject {
 
     func findAllClearLocations() -> [Coordinate] {
         var locations = [Coordinate]()
-        for (x, states) in self.myZoneStates.enumerated() {
+        for (x, states) in self.playerZoneStates.enumerated() {
             for (y, state) in states.enumerated() {
                 if case .clear = state {
                     let location = Coordinate(x: x, y: y)

@@ -13,6 +13,7 @@ struct ContentView: View {
                 ZStack {
                     VStack {
                         OceanView(ownership: .enemy)
+                        Spacer()
                         OceanView(ownership: .my)
                     }
                     
