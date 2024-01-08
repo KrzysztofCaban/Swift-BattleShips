@@ -151,76 +151,13 @@ final class Game: ObservableObject {
                     nearestLocations.append(clearLocation)
                 }
             }
-            if let directionToLastHit = self.directionToLastHit  {
-                var calculatedLocation = Coordinate( // copy the last hit
-                    x: lastHittedLocation.x,
-                    y: lastHittedLocation.y
-                )
-                switch directionToLastHit {
-                case .top:
-                    if calculatedLocation.y > 0 {
-                        calculatedLocation.y -= 1
-                        if clearLocations.contains(calculatedLocation) {
-                            location = calculatedLocation
-                        } else {
-                            if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                                location = suggestedLocation
-                            }
-                        }
-                    } else {
-                        if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                            location = suggestedLocation
-                        }
-                    }
-                case .bottom:
-                    if calculatedLocation.y < self.numRows - 1 {
-                        calculatedLocation.y += 1
-                        if clearLocations.contains(calculatedLocation) {
-                            location = calculatedLocation
-                        } else {
-                            if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                                location = suggestedLocation
-                            }
-                        }
-                    } else {
-                        if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                            location = suggestedLocation
-                        }
-                    }
-                case .left:
-                    if calculatedLocation.x > 0 {
-                        calculatedLocation.x -= 1
-                        if clearLocations.contains(calculatedLocation) {
-                            location = calculatedLocation
-                        } else {
-                            if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                                location = suggestedLocation
-                            }
-                        }
-                    } else {
-                        if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                            location = suggestedLocation
-                        }
-                    }
-                case .right:
-                    if calculatedLocation.x < self.numCols - 1 {
-                        calculatedLocation.x += 1
-                        if clearLocations.contains(calculatedLocation) {
-                            location = calculatedLocation
-                        } else {
-                            if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                                location = suggestedLocation
-                            }
-                        }
-                    } else {
-                        if let suggestedLocation = self.suggestLocation(available: clearLocations) {
-                            location = suggestedLocation
-                        }
-                    }
-                default:
-                    break
+            if let directionToLastHit = self.directionToLastHit {
+                let calculatedLocation = lastHittedLocation.move(in: directionToLastHit, within: self)
+                if clearLocations.contains(calculatedLocation) {
+                    location = calculatedLocation
+                } else if let suggestedLocation = self.suggestLocation(available: clearLocations) {
+                    location = suggestedLocation
                 }
-
             } else if let foundLocation = nearestLocations.randomElement() {
                 location = foundLocation
             }
@@ -315,3 +252,29 @@ final class Game: ObservableObject {
     }
 }
 
+extension Coordinate {
+    func move(in direction: Direction, within game: Game) -> Coordinate {
+        var newCoordinate = self
+        switch direction {
+        case .top:
+            if newCoordinate.y > 0 {
+                newCoordinate.y -= 1
+            }
+        case .bottom:
+            if newCoordinate.y < game.numRows - 1 {
+                newCoordinate.y += 1
+            }
+        case .left:
+            if newCoordinate.x > 0 {
+                newCoordinate.x -= 1
+            }
+        case .right:
+            if newCoordinate.x < game.numCols - 1 {
+                newCoordinate.x += 1
+            }
+        default:
+            break
+        }
+        return newCoordinate
+    }
+}
