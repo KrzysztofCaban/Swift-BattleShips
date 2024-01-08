@@ -21,12 +21,12 @@
 		380C874D2B4AE9AA0055DB9E /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874C2B4AE9AA0055DB9E /* Ship.swift */; };
 		380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C874E2B4AE9D30055DB9E /* Fleet.swift */; };
 		380C87512B4AEA0F0055DB9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87502B4AEA0F0055DB9E /* Game.swift */; };
+		38AE3C0A2B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AE3C092B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift */; };
 		3F134B5C2B4C47CE0013B183 /* ShipHitStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */; };
 		3F25762A2B4C6C4F00945450 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576292B4C6C4F00945450 /* Direction.swift */; };
 		3F25762C2B4C7E6200945450 /* RocketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25762B2B4C7E6200945450 /* RocketShape.swift */; };
 		3F25762E2B4C7EFA00945450 /* WaterAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25762D2B4C7EFA00945450 /* WaterAnimationView.swift */; };
 		3F2576302B4C7F3C00945450 /* FireAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25762F2B4C7F3C00945450 /* FireAnimationView.swift */; };
-		3F2576322B4C7FB900945450 /* OnChooseOceanZoneAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576312B4C7FB900945450 /* OnChooseOceanZoneAnimationView.swift */; };
 		3F2576342B4C805500945450 /* FireworksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576332B4C805500945450 /* FireworksView.swift */; };
 		3F2576362B4C80A200945450 /* FloodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576352B4C80A200945450 /* FloodView.swift */; };
 /* End PBXBuildFile section */
@@ -47,12 +47,12 @@
 		380C874C2B4AE9AA0055DB9E /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
 		380C874E2B4AE9D30055DB9E /* Fleet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
 		380C87502B4AEA0F0055DB9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		38AE3C092B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChooseOceanZoneAnimation.swift; sourceTree = "<group>"; };
 		3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipHitStatus.swift; sourceTree = "<group>"; };
 		3F2576292B4C6C4F00945450 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		3F25762B2B4C7E6200945450 /* RocketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketShape.swift; sourceTree = "<group>"; };
 		3F25762D2B4C7EFA00945450 /* WaterAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterAnimationView.swift; sourceTree = "<group>"; };
 		3F25762F2B4C7F3C00945450 /* FireAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAnimationView.swift; sourceTree = "<group>"; };
-		3F2576312B4C7FB900945450 /* OnChooseOceanZoneAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChooseOceanZoneAnimationView.swift; sourceTree = "<group>"; };
 		3F2576332B4C805500945450 /* FireworksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksView.swift; sourceTree = "<group>"; };
 		3F2576352B4C80A200945450 /* FloodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,9 +115,9 @@
 				3F25762B2B4C7E6200945450 /* RocketShape.swift */,
 				3F25762D2B4C7EFA00945450 /* WaterAnimationView.swift */,
 				3F25762F2B4C7F3C00945450 /* FireAnimationView.swift */,
-				3F2576312B4C7FB900945450 /* OnChooseOceanZoneAnimationView.swift */,
 				3F2576332B4C805500945450 /* FireworksView.swift */,
 				3F2576352B4C80A200945450 /* FloodView.swift */,
+				38AE3C092B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,10 +221,10 @@
 				380C87472B4AE93F0055DB9E /* OceanZoneState.swift in Sources */,
 				380C87432B4AE8920055DB9E /* ToolbarView.swift in Sources */,
 				380C873C2B4AE7D70055DB9E /* ContentView.swift in Sources */,
+				38AE3C0A2B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift in Sources */,
 				380C87492B4AE9570055DB9E /* Ocean.swift in Sources */,
 				380C874B2B4AE98B0055DB9E /* ShipCompartment.swift in Sources */,
 				380C874F2B4AE9D30055DB9E /* Fleet.swift in Sources */,
-				3F2576322B4C7FB900945450 /* OnChooseOceanZoneAnimationView.swift in Sources */,
 				3F2576342B4C805500945450 /* FireworksView.swift in Sources */,
 				3F25762A2B4C6C4F00945450 /* Direction.swift in Sources */,
 				380C87512B4AEA0F0055DB9E /* Game.swift in Sources */,
