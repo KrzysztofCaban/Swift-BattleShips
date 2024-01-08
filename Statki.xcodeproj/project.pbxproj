@@ -23,6 +23,7 @@
 		380C87512B4AEA0F0055DB9E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380C87502B4AEA0F0055DB9E /* Game.swift */; };
 		38AE3C0A2B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AE3C092B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift */; };
 		3F134B5C2B4C47CE0013B183 /* ShipHitStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */; };
+		3F15A40E2B4C942F00225C5E /* Ownership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15A40D2B4C942F00225C5E /* Ownership.swift */; };
 		3F25762A2B4C6C4F00945450 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2576292B4C6C4F00945450 /* Direction.swift */; };
 		3F25762C2B4C7E6200945450 /* RocketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25762B2B4C7E6200945450 /* RocketShape.swift */; };
 		3F25762E2B4C7EFA00945450 /* WaterAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25762D2B4C7EFA00945450 /* WaterAnimationView.swift */; };
@@ -49,6 +50,7 @@
 		380C87502B4AEA0F0055DB9E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		38AE3C092B4C87A600A31490 /* OnChooseOceanZoneAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChooseOceanZoneAnimation.swift; sourceTree = "<group>"; };
 		3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipHitStatus.swift; sourceTree = "<group>"; };
+		3F15A40D2B4C942F00225C5E /* Ownership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ownership.swift; sourceTree = "<group>"; };
 		3F2576292B4C6C4F00945450 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		3F25762B2B4C7E6200945450 /* RocketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketShape.swift; sourceTree = "<group>"; };
 		3F25762D2B4C7EFA00945450 /* WaterAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterAnimationView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				380C874E2B4AE9D30055DB9E /* Fleet.swift */,
 				3F134B5B2B4C47CE0013B183 /* ShipHitStatus.swift */,
 				3F2576292B4C6C4F00945450 /* Direction.swift */,
+				3F15A40D2B4C942F00225C5E /* Ownership.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F15A40E2B4C942F00225C5E /* Ownership.swift in Sources */,
 				3F25762C2B4C7E6200945450 /* RocketShape.swift in Sources */,
 				380C873F2B4AE81E0055DB9E /* OceanZoneView.swift in Sources */,
 				3F25762E2B4C7EFA00945450 /* WaterAnimationView.swift in Sources */,

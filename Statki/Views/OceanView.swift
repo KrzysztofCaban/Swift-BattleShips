@@ -6,12 +6,6 @@ struct OceanView: View {
     // Referencja do obiektu Game, który jest dostępny w całej aplikacji
     @EnvironmentObject var game: Game
 
-    // Definicja możliwych właścicieli planszy
-    enum Ownership {
-        case player
-        case enemy
-    }
-
     // Zmienna przechowująca informację o tym, czy plansza należy do gracza, czy przeciwnika
     let ownership: Ownership
     var body: some View {
