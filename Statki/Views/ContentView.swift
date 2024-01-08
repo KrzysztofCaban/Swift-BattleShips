@@ -60,7 +60,7 @@ struct ContentView: View {
 
 struct FireworksView: View {
     @Binding var isActive: Bool
-    @State private var scale: CGFloat = 1.0
+    @State private var opacity: Double = 1.0
 
     var body: some View {
         ZStack {
@@ -70,13 +70,13 @@ struct FireworksView: View {
                 Text("🎆")
                     .font(.system(size: 100))
                     .foregroundColor(.white)
-                    .scaleEffect(scale)
+                    .opacity(opacity)
                     .position(x: CGFloat.random(in: 50...300), y: CGFloat.random(in: 50...300))
                     .onAppear {
                         let baseAnimation = Animation.easeInOut(duration: 0.5)
                         let repeated = baseAnimation.repeatForever(autoreverses: true)
                         withAnimation(repeated) {
-                            scale = 1.5
+                            opacity = 0.0
                         }
                     }
                     .onTapGesture {
@@ -95,7 +95,7 @@ struct FloodView: View {
         ZStack {
             Color.blue.opacity(0.7).ignoresSafeArea()
             
-            Text("💦")
+            Text("🚢")
                 .font(.system(size: 100))
                 .foregroundColor(.white)
                 .onTapGesture {
@@ -105,4 +105,5 @@ struct FloodView: View {
         .opacity(isActive ? 1 : 0)
     }
 }
+
 
