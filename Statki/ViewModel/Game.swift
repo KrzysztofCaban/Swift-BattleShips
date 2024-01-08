@@ -149,7 +149,7 @@ final class Game: ObservableObject {
             let nearestLocations = getNearestLocations(to: lastHittedLocation, from: clearLocations)
             if let directionToLastHit = self.directionToLastHit {
                 let calculatedLocation = lastHittedLocation.move(in: directionToLastHit, within: self)
-                location = clearLocations.contains(calculatedLocation) ? calculatedLocation : self.suggestLocation(available: clearLocations)
+                location = (clearLocations.contains(calculatedLocation) ? calculatedLocation : self.suggestLocation(available: clearLocations))!
             } else if let foundLocation = nearestLocations.randomElement() {
                 location = foundLocation
             }
