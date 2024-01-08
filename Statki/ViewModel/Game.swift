@@ -68,7 +68,7 @@ final class Game: ObservableObject {
                 }
             } else {
                 enemyZoneStates[location.x][location.y] = .miss
-                gameMessage = "You missed"
+                gameMessage = "You missed at x:\(location.x), y:\(location.y)"
             }
 
             Task {
@@ -91,19 +91,19 @@ final class Game: ObservableObject {
                 hitShip.hit(at: location)
                 playerZoneStates[location.x][location.y] = .hit
                 if hitShip.isSunk() {
-                    gameMessage = "Enemy did sunk your \(hitShip.name)!"
+                    gameMessage = "Enemy sunk your \(hitShip.name)!"
                     status = .sunk
 
                     self.lastHittedLocation = nil
                     self.directionToLastHit = nil
                     self.suggestedLocation = nil
                 } else {
-                    gameMessage = "Hited at x:\(location.x), y:\(location.y)"
+                    gameMessage = "Enemy hited at x:\(location.x), y:\(location.y)"
                     status = .hit
                 }
             } else {
                 playerZoneStates[location.x][location.y] = .miss
-                gameMessage = "Missed at x:\(location.x), y:\(location.y)"
+                gameMessage = "Enemy miss at x:\(location.x), y:\(location.y)"
             }
         }
         return status

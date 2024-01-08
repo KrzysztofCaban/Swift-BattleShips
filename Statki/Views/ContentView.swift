@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var game: Game
-    @State private var showFireworks = false
-    @State private var showFlood = false
+    @State private var showEndAnimation = true
     @State private var yOffset: CGFloat = 0
     
     var body: some View {
@@ -16,19 +15,15 @@ struct ContentView: View {
                     OceanView(ownership: .player)
                 }.overlay{
                     if game.gameMessage == "YOU WON !" {
-                        FireworksView(isActive: $showFireworks)
+                        FireworksView(isActive: $showEndAnimation)
                     } else if game.gameMessage == "YOU LOST !" {
-                        FloodView(isActive: $showFlood)
+                        FloodView(isActive: $showEndAnimation)
                     }
                 }
                 .onChange(of: game.gameMessage) { newMessage in
-                    if newMessage == "YOU WON !" {
+                    if newMessage == "YOU WON !" || newMessage == "YOU LOSE !" {
                         withAnimation(.easeInOut(duration: 2.0)) {
-                            showFireworks = true
-                        }
-                    } else if newMessage == "YOU LOST !" {
-                        withAnimation(.easeInOut(duration: 2.0)) {
-                            showFlood = true
+                            showEndAnimation = true
                         }
                     }
                 }
@@ -66,23 +61,17 @@ struct FireworksView: View {
         ZStack {
             Color.black.opacity(0.7).ignoresSafeArea()
 
-            ForEach(0..<5) { _ in
-                Text("🎆")
-                    .font(.system(size: 100))
-                    .foregroundColor(.white)
-                    .opacity(opacity)
-                    .position(x: CGFloat.random(in: 50...300), y: CGFloat.random(in: 50...300))
-                    .onAppear {
-                        let baseAnimation = Animation.easeInOut(duration: 0.5)
-                        let repeated = baseAnimation.repeatForever(autoreverses: true)
-                        withAnimation(repeated) {
-                            opacity = 0.0
-                        }
+            Text("🎆")
+                .font(.system(size: 300))
+                .foregroundColor(.white)
+                .opacity(opacity)
+                .onAppear {
+                    let baseAnimation = Animation.easeInOut(duration: 1)
+                    let repeated = baseAnimation.repeatForever(autoreverses: true)
+                    withAnimation(repeated) {
+                        opacity = 0.0
                     }
-                    .onTapGesture {
-                        isActive = false
-                    }
-            }
+                }
         }
         .opacity(isActive ? 1 : 0)
     }
@@ -96,11 +85,9 @@ struct FloodView: View {
             Color.blue.opacity(0.7).ignoresSafeArea()
             
             Text("🚢")
-                .font(.system(size: 100))
+                .font(.system(size: 300))
                 .foregroundColor(.white)
-                .onTapGesture {
-                    isActive = false
-                }
+                .rotationEffect(Angle(degrees: 90))
         }
         .opacity(isActive ? 1 : 0)
     }
